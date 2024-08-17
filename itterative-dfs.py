@@ -1,40 +1,20 @@
-class Node :
-    def __init__(self, data) :
-        self.data = data
-        self.right = None
-        self.left = None
+from node import Node
+
+#tree traversal using DFS
+def dfs(root) :
+    if root is None :
+        return
     
-    def insert(self, data) :
-        if self.data :
-            if data < self.data :
-                if self.left is None :
-                    self.left = Node(data)
-                else :
-                    self.left.insert(data)
+    st = [root]
+    while st :
+        node  = st.pop()
+        print(node.data)
+        if node.left :
+            st.append(node.left)
+        if node.right :
+            st.append(node.right)
 
-            elif data > self.data :
-                if self.right is None :
-                    self.right = Node(data)
-                else :
-                    self.right.insert(data)
-        else :
-            self.data = data
-
-    #tree traversal using DFS
-    def dfs(root) :
-        if root is None :
-            return
-        
-        st = [root]
-        while st :
-            node  = st.pop()
-            print(node.data)
-
-            if node.left :
-                st.append(node.left)
-            if node.right :
-                st.append(node.right)
-
+    
 
 root = Node('a')
 root.insert('b')
